@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to Hostinger VPS
+      - name: Deploy to Hostinger VPS (develop)
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -34,6 +34,6 @@ jobs:
             cd ../backend
             npm install
 
-            pm2 restart setu-website --update-env || pm2 start npm --name setu-website -- start
+            pm2 restart setu-website-develop --update-env
 
             pm2 save
